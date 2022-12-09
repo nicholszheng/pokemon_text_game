@@ -3,9 +3,12 @@
 # creates the main menu that displays the introduction to the game and instructions
 def main_menu():
     print("\nWelcome to the 'Moving Between Rooms' game created by Nicole Zheng.")
-    print("Move Commands: North, South, East, West")
-    print("You may exit the game by typing 'exit' when a move is requested.")
-
+    print("Move Commands: North, South, East, West.")
+    print("To collect items, enter ‘item’ to collect item in the current room.")
+    print("\nWelcome to the town of Pokemon! We encourage fellow Pokemon to go on exciting adventures."
+          "\nThe town provided a quest for you to gain experience so that you may be a better version of yourself!"
+          "\nQUEST: Go on an adventure to collect all 6 items before fighting the boss villain Meowth.")
+    print("\nYou may exit the game by typing 'exit' when a move is requested.")
 # this creates a class called move_between_rooms with the three values
 def move_between_rooms(current_room, move, rooms):
     current_room = rooms[current_room][move] # assigned var current_room which pulls the current location
