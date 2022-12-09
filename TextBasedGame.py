@@ -13,9 +13,15 @@ def move_between_rooms(current_room, move, rooms):
 
 # a nested dictionary called rooms which lists assignments of the key and values
 rooms = {
-        'Great Hall': {'South': 'Bedroom'},
-        'Bedroom': {'North': 'Great Hall', 'East': 'Cellar'},
-        'Cellar': {'West': 'Bedroom'}
+        'Town': {'West': 'Forest', 'East': 'Caves', 'South': 'Bridge'},
+        'Forest': {'North': 'Grasslands', 'East': 'Town', 'Item': 'Zoom Lens'},
+        'Grasslands': {'East': 'River', 'South': 'Forest', 'Item': 'Apple'},
+        'River': {'East': 'Mountain', 'West': 'Grasslands', 'Item': 'Rocky Helmet'},
+        'Mountain': {'West': 'River', 'South': 'Caves', 'Item': 'Reviver Seed'},
+        'Caves': {'South': 'Rocky Trenches', 'North': 'Mountain', 'West': 'Town', 'Item': 'Gravelrock'},
+        'Rocky Trenches': {'North': 'Caves', 'Item': 'Oran Berry'},
+        'Bridge': {'North': 'Town', 'West': 'Final Room: Boss Meowth'},
+        'Final Room: Boss Meowth': {'East': 'Bridge'}
     }
 
 # when main is defined, the program can then execute as the starting point. In this case, we start the game here
@@ -23,7 +29,7 @@ rooms = {
 def main():
     s = ' '
     inventory = [] # created var to store items collected along the way
-    current_room = 'Great Hall' # this sets the starting location as the Great Hall
+    current_room = 'Town' # this sets the starting location as the Great Hall
     main_menu() # calls the main_menu (which was already set up before defining main)
 
     # Game Loop
