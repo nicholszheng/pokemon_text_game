@@ -47,44 +47,14 @@ def main():
     # Game Loop
 
     while current_room != 'exit':
-        print("\n------------------------------")
-        print("\nYou are in the ", current_room)
-        print("Available Moves: ", *rooms[current_room])  # the star isolates the moves from the dict format
 
-        # requests user to input their next move
-        move = input("Enter move: ")
-        if move.capitalize() in rooms[current_room].keys():  # if the input matches the keys in the rooms dict, then...
-            current_room = move_between_rooms(current_room, move.capitalize(), rooms)
-            # current_room is reassigned which calls out the move_between_rooms class
-            continue  # this keyword ends current iteration in a for loop or a while loop, then continues next iteration
-
-        # unless user inputs exit
-        elif move == 'exit':
-            current_room = 'exit'  # then current_room reassigns to exit
-            print("\nGame ended. Thank you for playing the 'Moving Between Rooms' game!")
-
-        # Input validation
-        else:
-            print("Invalid input. Try again!")  # when user enters a move that does not match the available moves
-
-        # collecting items and adding inventory
-        if len(move) == 4 and move[0] == 'Get' and s.join(move[1:3]) in rooms[current_room]['Item']:
-            print("You picked up the {}".format(rooms[current_room]['Item']))
-            print('---------------------------------------')
-            get_item(current_room, move, rooms, inventory)
-
-        # tells user if they see an item in the location
-        if current_room != 'Final Room: Boss Meowth' and 'Item' in rooms[current_room].keys():
-            print('You see the {}'.format(rooms[current_room]['Item']))
-            print("---------------------------------------------")
-
-    while True:
         # for when user arrives at the villain location
         if current_room == 'Final Room: Boss Meowth':
             # winning the battle
-            if len(inventory) == 6:
-                print("You entered the room that appeared to be empty, you looked around to see what is left behind."
-                      "\nBefore you could turn around, you hear a “MEOWTH~”")
+            if move.capitalize() == 'West' and len(inventory) == 6:
+                print(
+                    "You entered the room that appeared to be empty, you looked around to see what is left behind."
+                    "\nBefore you could turn around, you hear a “MEOWTH~”")
 
                 print("You’ve been clawed from the back. Immediately, you jump back and pulled out the Oran Berry"
                       "you’ve found on the way here. "
@@ -104,8 +74,8 @@ def main():
 
                 print("Congratulations! You’ve completed the Town’s quest to defeat the villain!\n"
                       "Thanks for playing! Hope you enjoyed this mini text game!")
-
-            else:
+                break
+            elif move.capitalize() == 'West' and len(inventory) != 6:
                 # respawning (because you didn't collect all six)
                 print("You are halfway on the bridge when it starts rumbling. "
                       "You notice the planks under you start cracking and before you could act, "
@@ -114,8 +84,45 @@ def main():
                       "the flying pokemon comments as he heads back to town safely. "
                       "You make it safely back to the beginning of the bridge. Maybe some more items could help.")
 
-            print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~RESPAWNED~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~RESPAWNED~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                move = 'East'
+                current_room = move_between_rooms(current_room, move.capitalize(), rooms)
 
-        break
+        print("\n------------------------------")
+        print("\nYou are in the ", current_room)
+        print("Current Inventory: ", *inventory)  # the star isolates the moves from the dict format
+        print(" ")
+        print("Available Moves: ", *rooms[current_room])  # the star isolates the moves from the dict format
+
+        # tells user if they see an item in the location
+        if 'Item' in rooms[current_room].keys():
+            print('You see the {}'.format(rooms[current_room]['Item']))
+            print("---------------------------------------------")
+
+        # requests user to input their next move
+        move = input("Enter move: ")
+
+        if move.capitalize() !='Item' and move.capitalize() in rooms[current_room].keys():  # if the input matches the keys in the rooms dict, then...
+            current_room = move_between_rooms(current_room, move.capitalize(), rooms)
+            # current_room is reassigned which calls out the move_between_rooms class
+            continue  # this keyword ends current iteration in a for loop or a while loop, then continues next iteration
+
+        # collecting items and adding inventory
+        elif move.capitalize() == 'Item':
+            print("You picked up the {}".format(rooms[current_room]['Item']))
+            get_item(current_room, move, rooms, inventory)
+
+        # unless user inputs exit
+        elif move.capitalize() == 'Exit':
+            current_room = 'exit'  # then current_room reassigns to exit
+            print("\nGame ended. Thank you for playing the 'Moving Between Rooms' game!")
+
+
+        # Input validation
+        else:
+            print("Invalid input. Try again!")  # when user enters a move that does not match the available moves
+
+
+
 
 main()
