@@ -14,6 +14,11 @@ def move_between_rooms(current_room, move, rooms):
     current_room = rooms[current_room][move] # assigned var current_room which pulls the current location
     return current_room # return applies the changes made to the var current_room
 
+def get_item(current_room, move, rooms, inventory):
+    #adding items to inventory and removing it from current room
+    inventory.append(rooms[current_room]['Item'])
+    del rooms[current_room]['Item']
+
 # a nested dictionary called rooms which lists assignments of the key and values
 rooms = {
         'Town': {'West': 'Forest', 'East': 'Caves', 'South': 'Bridge'},
@@ -58,6 +63,11 @@ def main():
         else:
             print("Invalid input. Try again!") # when user enters a move that does not match the available moves
 
+        if len(move) == 4 and move[0] == 'Get' and s.join(move[1:3]) in rooms[current_room]['Item']:
+            print("You picked up the {}".format(rooms[current_room]['Item']))
+            print('---------------------------------------')
+            get_item(current_room, move, rooms, inventory)
+
 
     while True:
         #for when user arrives at the villain location
@@ -97,6 +107,23 @@ def main():
                   "You make it safely back to the beginning of the bridge. Maybe some more items could help.")
 
             print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~RESPAWNED~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+            #displays current room, inventory and a prompt for the next move
+            print('You are in the ' + current_room)
+            print(inventory)
+
+            #tells user if they see an item in the location
+            if current_room != 'Final Room: Boss Meowth' and 'Item' in rooms[current_room].keys():
+                print('You see the {}'.format(rooms[current_room]['Item']))
+            print("---------------------------------------------")
+
+#move = input("Enter move: ").title().split()
+
+# handle if the user enters a command to move to a new room
+#if len(move) >= 2 and move[1] in rooms[current_room].keys():
+    #current_room = move_
+
+
 
 
 main()
