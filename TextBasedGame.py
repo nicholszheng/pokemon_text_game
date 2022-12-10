@@ -89,12 +89,14 @@ def main():
 
                 #respawning (because you didn't collect all six)
 
-                print("You are halfway on the bridge when it starts rumbling. "
-                      "You notice the planks under you start cracking and before you could act, "
-                      "you lose your balance and fall through the bridge. Pidgeotto swoops in to catch you "
-                      "before you reach the depths of darkness below you. “Ca-Caw! That was close!” "
-                      "the flying pokemon comments as he heads back to town safely. "
-                      "You make it safely back to the beginning of the bridge. Maybe some more items could help.")
+            print("You are halfway on the bridge when it starts rumbling. "
+                  "You notice the planks under you start cracking and before you could act, "
+                  "you lose your balance and fall through the bridge. Pidgeotto swoops in to catch you "
+                  "before you reach the depths of darkness below you. “Ca-Caw! That was close!” "
+                  "the flying pokemon comments as he heads back to town safely. "
+                  "You make it safely back to the beginning of the bridge. Maybe some more items could help.")
+
+            print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~RESPAWNED~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 
 main()
