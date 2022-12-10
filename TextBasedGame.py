@@ -36,6 +36,7 @@ def main():
     main_menu() # calls the main_menu (which was already set up before defining main)
 
     # Game Loop
+
     while current_room != 'exit':
         print("\n------------------------------")
         print("\nYou are in the ", current_room)
@@ -56,5 +57,37 @@ def main():
         # Input validation
         else:
             print("Invalid input. Try again!") # when user enters a move that does not match the available moves
+
+
+    while True:
+        #for when user arrives at the villain location
+        if current_room == 'Final Room: Boss Meowth':
+            #winning the battle
+            if len(inventory) == 6:
+                print("You entered the room that appeared to be empty, you looked around to see what is left behind."
+                      "\nBefore you could turn around, you hear a “MEOWTH~”")
+
+                print("You’ve been clawed from the back. Immediately, you jump back and pulled out the Oran Berry"
+                      "you’ve found on the way here. "
+                      "\nYou pop the berry in your mouth and your injuries heals quickly.")
+
+                print("Meowth slowly approaches you with a big smirk and confidently says, I’m going to steal you "
+                      "and make Team Rocket prou-MEOWTH!' The boss was hit in the eye by the gravelrock you tossed.")
+
+                print("'Why… you…’ Meowth angrily lowers his voice with his left eye shut. "
+                      "He lunges forward with his paw, which you dodge easily. "
+                      "You’ve gathered enough energy to release your strong ability, Thunderbolt. "
+                      "The thunder crackles down from the sky and shocks Meowth. He falls to the ground unconscious.")
+
+                print("You sigh and look around what else may be around the room before you leave."
+                      "You just remembered that you have a Reviver Seed that can revive Meowth back to life, "
+                      "so you do just that. You walk away feeling stronger and confident in yourself.")
+
+                print("Congratulations! You’ve completed the Town’s quest to defeat the villain!\n"
+                      "Thanks for playing! Hope you enjoyed this mini text game!")
+                break
+
+                #losing the battle (because you didn't collect all six)
+
 
 main()
