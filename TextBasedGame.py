@@ -10,17 +10,15 @@ def main_menu():
           "\nQUEST: Go on an adventure to collect all 6 items before fighting the boss villain Meowth.")
     print("\nYou may exit the game by typing 'exit' when a move is requested.")
 
-
 # this creates a class called move_between_rooms with the three values
 def move_between_rooms(current_room, move, rooms):
     current_room = rooms[current_room][move]  # assigned var current_room which pulls the current location
     return current_room  # return applies the changes made to the var current_room
 
-
 def get_item(current_room, move, rooms, inventory):
     # adding items to inventory and removing it from current room
-    inventory.append(rooms[current_room]['Item'])
-    del rooms[current_room]['Item']
+    inventory.append(rooms[current_room]['Item']) #adds item into inventory
+    del rooms[current_room]['Item'] #when item is added into inventory, the same item is now deleted from the current room
 
 # when main is defined, the program can then execute as the starting point. In this case, we start the game here
 # when we call main()
