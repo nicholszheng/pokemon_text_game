@@ -1,4 +1,5 @@
 # Nicole Zheng
+#IT-140 Intro to Scripting
 
 # creates the main menu that displays the introduction to the game and instructions
 def main_menu():
